@@ -2,16 +2,6 @@ import '../scss/style.scss';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Hello from './components/hello';
+import App from './components/App';
 
-const App = React.createClass({
-  render() {
-    return (
-      <div>
-        <Hello name='Lyndsey' />
-      </div>
-    )
-  }
-});
-
-ReactDOM.render(<App />, document.querySelector('#app'));
+ReactDOM.render(<App name='Lyndsey' />, document.querySelector('#app'));

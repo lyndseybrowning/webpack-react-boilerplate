@@ -4,7 +4,7 @@
   "description": "webpack-react-boilerplate",
   "main": "main.js",
   "scripts": {
-    "start": "webpack-dev-server --hot"
+    "start": "node server.js"
   },
   "author": "Lyndsey Browning",
   "license": "ISC",
