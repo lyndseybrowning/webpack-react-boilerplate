@@ -1,39 +1,45 @@
-var path = require('path');
 var webpack = require('webpack');
 
-module.exports = {
-  noInfo: true, // set to false to see a list of every file being bundled
-  entry: [
-    'webpack-dev-server/client?http://0.0.0.0:3000', // WebpackDevServer host and port
-    'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
-    './app/js/main.js'
-  ],
+/*
+ * Default webpack configuration for development
+ */
+var config = {
+  devtool: 'eval-source-map',
+  entry:  __dirname + "/src/js/main.js",
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/static/'
+    path: __dirname + "/build",
+    filename: "bundle.js"
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ],
   module: {
-    preLoaders: [
-      {
-        test: /\.js$/,
-        exclude: 'node_modules',
-        loader: 'eslint-loader'
-      }
-    ],
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.js?$/,
         exclude: /node_modules/,
-        loaders: ['react-hot', 'babel']        
+        loader: 'babel'
       },
       {
-          test: /\.scss$/,
-          loaders: ['style', 'css', 'sass']
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'sass']
       }
     ]
-  }
+  },
+
+  postcss: [
+    require('autoprefixer')
+  ],
+
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ],
+
+  devServer: {
+    colors: true,
+    historyApiFallback: true,
+    post: process.env.PORT||8080,
+    inline: true,
+    hot: true
+  },
 }
+
+module.exports = config;

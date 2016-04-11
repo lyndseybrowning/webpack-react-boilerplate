@@ -3,7 +3,7 @@ import React from 'react';
 export default React.createClass({
   render() {
     return (
-      <div> Hello, {this.props.name}. How are you today? </div>
+      <div> Hello, {this.props.name}. How are you? </div>
     )
   }
 });
