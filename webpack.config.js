@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var WebpackNotifierPlugin = require('webpack-notifier');
 
 /*
  * Default webpack configuration for development
@@ -30,7 +31,8 @@ var config = {
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new WebpackNotifierPlugin()
   ],
 
   devServer: {
